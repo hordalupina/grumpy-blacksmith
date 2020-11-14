@@ -2,29 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class Note
+{
+    public KeyCode Key;
+    public float Rotation;
+
+    public Note(KeyCode key, float rotation)
+    {
+        Key = key;
+        Rotation = rotation;
+    }
+}
+
 public class NoteFactory : MonoBehaviour
 {
     public GameObject notePrefab;
 
     public float delay = 1f;
 
-    KeyCode[] availableKeys = {
-        KeyCode.UpArrow,
-        KeyCode.DownArrow,
-        KeyCode.RightArrow,
-        KeyCode.LeftArrow
+    Note[] availableKeys = {
+        new Note(KeyCode.UpArrow, 180f),
+        new Note(KeyCode.DownArrow, 0f),
+        new Note(KeyCode.RightArrow, 90f),
+        new Note(KeyCode.LeftArrow, -90f)
     };
 
-    Queue<KeyCode> myQueue = new Queue<KeyCode>();
+    Queue<Note> myQueue = new Queue<Note>();
 
     void Start()
     {
         AddNotesToQueue();
         AddNotesToQueue();
 
-        // InvokeRepeating("InstantiateNote", 1f, 1.0f);
         StartCoroutine(InstantiationLoop());
-        
     }
 
     IEnumerator InstantiationLoop()
@@ -42,7 +52,7 @@ public class NoteFactory : MonoBehaviour
 
     void InstantiateNote()
     {
-        KeyCode currentNote = myQueue.Dequeue();
+        Note currentNote = myQueue.Dequeue();
 
         GameObject newNoteInstance = Instantiate(
             notePrefab,
@@ -50,9 +60,14 @@ public class NoteFactory : MonoBehaviour
             Quaternion.identity
         );
         newNoteInstance.transform.parent = gameObject.transform;
-        newNoteInstance.GetComponent<NoteObject>().key = currentNote;
+        newNoteInstance.GetComponent<NoteObject>().key = currentNote.Key;
+        newNoteInstance.transform.GetChild(0).eulerAngles = new Vector3(
+            0f,
+            0f,
+            currentNote.Rotation
+        );
 
-        if (myQueue.Count <= 8)
+        if (myQueue.Count <= 10)
         {
             AddNotesToQueue();
         }
