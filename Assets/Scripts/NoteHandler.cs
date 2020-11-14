@@ -38,7 +38,7 @@ public class NoteHandler : MonoBehaviour
         IEnumerator DelayEffects(float delay)
         {
             yield return new WaitForSeconds(delay);
-            GameManager.instance.sfxPlayer.PlayOneShot(GameManager.instance.sounds.forge);
+            GameManager.instance.sfxPlayer.PlayOneShot(GameManager.instance.sounds.forgeUp);
             //camerashake
             Camera.main.transform.DOComplete();
             Camera.main.transform.DOShakePosition(.2f, .05f, 10, 90, false, true);
