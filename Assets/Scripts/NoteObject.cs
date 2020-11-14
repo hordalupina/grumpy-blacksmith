@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable] public class NoteEvent : UnityEvent { }
+[System.Serializable] public class NoteEvent : UnityEvent<int> { }
+
 public class NoteObject : MonoBehaviour
 {
     GameManager gm;
@@ -25,12 +26,11 @@ public class NoteObject : MonoBehaviour
         if (canBePressed && Input.GetKey(key))
         {
             //evento para ativação de visuais/sonoras
-            Hit.Invoke();
+            Hit.Invoke(0);
 
             print("up arrow key is held down");
-            gm.sfxPlayer.PlayOneShot(gm.sounds.forge);
             canBePressed = false;
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 
@@ -38,7 +38,7 @@ public class NoteObject : MonoBehaviour
     {
         canBePressed = true;
         if (other.CompareTag("Destroy")) {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         // Debug.Log(other.gameObject.name + " : " + gameObject.name + " : " + Time.time);
     }
