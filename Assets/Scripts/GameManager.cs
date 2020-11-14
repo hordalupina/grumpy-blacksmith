@@ -2,17 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
-{
-    // Start is called before the first frame update
+public class GameManager : MonoBehaviour {
+
+    public AudioSource audioPlayer;
+    public static GameManager instance;
+
     void Start()
     {
-        
+        audioPlayer = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        if (GameManager.instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
+    
 }
