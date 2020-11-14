@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-[System.Serializable] public class NoteEvent : UnityEvent<int> { }
+[System.Serializable] public class NoteEvent : UnityEvent<KeyCode> { }
 
 public class NoteObject : MonoBehaviour
 {
@@ -25,7 +25,7 @@ public class NoteObject : MonoBehaviour
     public void Play()
     {
         played = true;
-        Hit.Invoke(0);
+        Hit.Invoke(key);
         GetComponent<Collider2D>().enabled = false;
         Destroy(gameObject, .5f);
     }
