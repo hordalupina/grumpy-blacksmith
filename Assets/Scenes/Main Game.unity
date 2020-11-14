@@ -350,7 +350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265406321}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 0.06, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9511054, y: 0.9511054, z: 0.9511054}
   m_Children:
   - {fileID: 1322689970}
@@ -6695,6 +6695,8 @@ MonoBehaviour:
   sounds: {fileID: 412192382}
   scoreHandler: {fileID: 260737075}
   readerAnimator: {fileID: 490572116}
+  scroll: {fileID: 0}
+  playerUi: {fileID: 0}
 --- !u!4 &1877767816
 Transform:
   m_ObjectHideFlags: 0
