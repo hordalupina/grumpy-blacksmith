@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class retry : MonoBehaviour
+public class menuController : MonoBehaviour
 {
     void Update()
     {

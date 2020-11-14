@@ -19,6 +19,10 @@ public class NoteHandler : MonoBehaviour
 
     }
 
+    void OnDestroy() {
+        noteObject.Hit.RemoveListener(Hit);
+    }
+
     void Hit(int dir)
     {
         GameManager.instance.sfxPlayer.pitch = Random.Range(1f, 1.15f);
