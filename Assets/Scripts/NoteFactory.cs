@@ -18,7 +18,7 @@ public class NoteFactory : MonoBehaviour
         AddNotesToQueue();
         AddNotesToQueue();
 
-        InvokeRepeating("InstantiateNote", 1f, 1.0f);
+        InvokeRepeating("InstantiateNote", 2f, 2.0f);
     }
 
     void InstantiateNote()

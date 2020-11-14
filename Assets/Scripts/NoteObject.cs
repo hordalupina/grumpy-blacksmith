@@ -36,10 +36,14 @@ public class NoteObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        canBePressed = true;
         if (other.CompareTag("Destroy")) {
             //Destroy(gameObject);
         }
+
+        if (other.CompareTag("Collider")) {
+            canBePressed = true;
+        }
+
         // Debug.Log(other.gameObject.name + " : " + gameObject.name + " : " + Time.time);
     }
 
