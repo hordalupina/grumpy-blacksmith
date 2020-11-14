@@ -28,6 +28,7 @@ public class NoteObject : MonoBehaviour
         {
             //evento para ativação de visuais/sonoras
             Hit.Invoke(0);
+            gm.scoreHandler.AddScore(1);
 
             print("up arrow key is held down");
             canBePressed = false;
