@@ -725,8 +725,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   song_theme: {fileID: 0}
   song_bg: {fileID: 0}
-  forge: {fileID: 8300000, guid: 1b6620f7f4b6ca6f8a7a0bdebebec273, type: 3}
-  miss: {fileID: 0}
+  forgeUp: {fileID: 8300000, guid: cb6920f9eaa35ee3b801690ce1231a41, type: 3}
+  forgeDown: {fileID: 8300000, guid: 2169127ce9a326da7881ca8a2bf1e92a, type: 3}
+  forgeLeft: {fileID: 8300000, guid: 5a786180e165632809fab1be244be5b5, type: 3}
+  forgeRight: {fileID: 8300000, guid: 1b6620f7f4b6ca6f8a7a0bdebebec273, type: 3}
+  miss: {fileID: 8300000, guid: 8a6a3b3e883544121bde291ea64dee72, type: 3}
 --- !u!4 &412192383
 Transform:
   m_ObjectHideFlags: 0

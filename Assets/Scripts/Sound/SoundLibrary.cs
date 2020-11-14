@@ -11,6 +11,9 @@ public class SoundLibrary : MonoBehaviour
     [Space]
 
     [Header("Sound Effects")]
-    public AudioClip forge;
+    public AudioClip forgeUp;
+    public AudioClip forgeDown;
+    public AudioClip forgeLeft;
+    public AudioClip forgeRight;
     public AudioClip miss;
 }
