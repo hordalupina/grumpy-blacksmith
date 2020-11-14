@@ -20,20 +20,24 @@ public class NoteDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (latestNote != null && latestNote.played)
-        {
-            return;
-        }
+        CheckPressWhenKeyIsNotInDetector();
 
+        CheckKeyInDetectorIsRight();
+
+        CheckKeyInDetectorIsWrong();
+   
+    }
+
+    void CheckPressWhenKeyIsNotInDetector()
+    {
         if (!canBePressed 
-            && (Input.GetKey(KeyCode.UpArrow)
-                || Input.GetKey(KeyCode.DownArrow)
-                || Input.GetKey(KeyCode.LeftArrow)
-                || Input.GetKey(KeyCode.RightArrow)
+            & (Input.GetKeyDown(KeyCode.UpArrow)
+                || Input.GetKeyDown(KeyCode.DownArrow)
+                || Input.GetKeyDown(KeyCode.LeftArrow)
+                || Input.GetKeyDown(KeyCode.RightArrow)
             )
         )
         {
-            print("wrong arrow key is held down");
             canBePressed = false;
             GetComponent<Collider2D>().enabled = false;
             Destroy(gameObject, .5f);
@@ -42,18 +46,36 @@ public class NoteDetector : MonoBehaviour
 
             return;
         }
+    }
 
-        if (canBePressed && latestNote != null && Input.GetKey(latestNote.key))
+    void CheckKeyInDetectorIsRight()
+    {
+        if (canBePressed && latestNote != null && Input.GetKeyDown(latestNote.key))
         {
             //evento para ativação de visuais/sonoras
-            latestNote.played = true;
             latestNote.Play();
             gm.scoreHandler.AddScore(1);
 
-            print("correct arrow key is held down");
             canBePressed = false;
 
             return;
+        }
+    }
+
+    void CheckKeyInDetectorIsWrong()
+    {
+        if (canBePressed && latestNote != null && (
+            (Input.GetKeyDown(KeyCode.UpArrow) && KeyCode.UpArrow != latestNote.key)
+            || (Input.GetKeyDown(KeyCode.DownArrow) && KeyCode.DownArrow != latestNote.key)
+            || (Input.GetKeyDown(KeyCode.LeftArrow) && KeyCode.LeftArrow != latestNote.key)
+            || (Input.GetKeyDown(KeyCode.RightArrow) && KeyCode.RightArrow != latestNote.key)
+        ))
+        {
+            canBePressed = false;
+            GetComponent<Collider2D>().enabled = false;
+            Destroy(gameObject, .5f);
+
+            SceneManager.LoadSceneAsync("GameOver");
         }
     }
 
@@ -69,6 +91,7 @@ public class NoteDetector : MonoBehaviour
     {
         if (other.CompareTag("Collider")) {
             canBePressed = false;
+            latestNote = null;
         }
     }
 }
