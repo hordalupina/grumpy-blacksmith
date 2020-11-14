@@ -30,16 +30,20 @@ public class NoteObject : MonoBehaviour
 
             print("up arrow key is held down");
             canBePressed = false;
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        canBePressed = true;
         if (other.CompareTag("Destroy")) {
             //Destroy(gameObject);
         }
+
+        if (other.CompareTag("Collider")) {
+            canBePressed = true;
+        }
+
         // Debug.Log(other.gameObject.name + " : " + gameObject.name + " : " + Time.time);
     }
 
