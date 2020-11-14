@@ -9,7 +9,7 @@ public class retry : MonoBehaviour
     {
         if (Input.anyKey)
         {
-            SceneManager.LoadSceneAsync("Main Game");
+            SceneManager.LoadSceneAsync("tut");
         }
     }
 }
