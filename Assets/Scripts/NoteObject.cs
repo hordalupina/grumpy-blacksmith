@@ -24,6 +24,7 @@ public class NoteObject : MonoBehaviour
 
     public void Play()
     {
+        played = true;
         Hit.Invoke(0);
         GetComponent<Collider2D>().enabled = false;
         Destroy(gameObject, .5f);
