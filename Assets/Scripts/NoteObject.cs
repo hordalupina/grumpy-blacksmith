@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 [System.Serializable] public class NoteEvent : UnityEvent<int> { }
 
@@ -37,14 +38,13 @@ public class NoteObject : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Destroy")) {
-            //Destroy(gameObject);
+            //Game Over Condition
+            SceneManager.LoadSceneAsync("GameOver");
         }
 
         if (other.CompareTag("Collider")) {
             canBePressed = true;
         }
-
-        // Debug.Log(other.gameObject.name + " : " + gameObject.name + " : " + Time.time);
     }
 
     private void OnTriggerExit2D(Collider2D other)
