@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour {
 
@@ -14,6 +15,13 @@ public class GameManager : MonoBehaviour {
     public SoundLibrary sounds;
     public ScoreHandler scoreHandler;
 
+    [Header("Characters")]
+    public Animator readerAnimator;
+
+    [Header("Scroll")]
+    public Transform scroll;
+    public Transform playerUi;
+
     private void Awake()
     {
         if (GameManager.instance != null)
@@ -23,6 +31,25 @@ public class GameManager : MonoBehaviour {
         else
         {
             instance = this;
+        }
+
+        if(readerAnimator != null)
+        {
+            StartCoroutine(Delay());
+            IEnumerator Delay()
+            {
+                yield return new WaitForSeconds(.5f);
+                readerAnimator.SetTrigger("read");
+            }
+        }
+        if(scroll != null)
+        {
+            scroll.DOScale(.3f, .4f).From().SetEase(Ease.OutBack).SetDelay(.5f);
+        }
+
+        if(playerUi != null)
+        {
+            playerUi.DOScale(0, .4f).From().SetEase(Ease.OutBack).SetDelay(.7f);
         }
     }
     
