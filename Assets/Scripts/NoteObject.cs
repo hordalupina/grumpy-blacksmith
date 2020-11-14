@@ -30,7 +30,7 @@ public class NoteObject : MonoBehaviour
 
             print("up arrow key is held down");
             canBePressed = false;
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,17 +7,21 @@ public class NoteFactory : MonoBehaviour
 
     public GameObject notePrefab;
 
+    KeyCode[] availableKeys = {
+        KeyCode.UpArrow,
+        KeyCode.DownArrow,
+        KeyCode.RightArrow,
+        KeyCode.LeftArrow
+    };
+
     Queue<KeyCode> myQueue = new Queue<KeyCode>();
 
     void Start()
     {
         AddNotesToQueue();
         AddNotesToQueue();
-        AddNotesToQueue();
-        AddNotesToQueue();
-        AddNotesToQueue();
 
-        InvokeRepeating("InstantiateNote", 2f, 2.0f);
+        InvokeRepeating("InstantiateNote", 1f, 1.0f);
     }
 
     void InstantiateNote()
@@ -32,17 +35,18 @@ public class NoteFactory : MonoBehaviour
         );
         newNoteInstance.transform.parent = gameObject.transform;
         newNoteInstance.GetComponent<NoteObject>().key = currentNote;
+
+        if (myQueue.Count <= 8)
+        {
+            AddNotesToQueue();
+        }
     }
 
     void AddNotesToQueue()
     {   
-        myQueue.Enqueue(KeyCode.UpArrow);
-        myQueue.Enqueue(KeyCode.DownArrow);
-        myQueue.Enqueue(KeyCode.LeftArrow);
-        myQueue.Enqueue(KeyCode.RightArrow);
-        myQueue.Enqueue(KeyCode.UpArrow);
-        myQueue.Enqueue(KeyCode.DownArrow);
-        myQueue.Enqueue(KeyCode.LeftArrow);
-        myQueue.Enqueue(KeyCode.RightArrow);
+        for (int i = 0; i < 8; i++) 
+        {
+            myQueue.Enqueue(availableKeys[Random.Range(0, availableKeys.Length)]);
+        }
     }
 }
