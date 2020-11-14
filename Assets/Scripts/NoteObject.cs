@@ -31,7 +31,8 @@ public class NoteObject : MonoBehaviour
 
             print("up arrow key is held down");
             canBePressed = false;
-            Destroy(gameObject);
+            GetComponent<Collider2D>().enabled = false;
+            Destroy(gameObject, .5f);
         }
     }
 

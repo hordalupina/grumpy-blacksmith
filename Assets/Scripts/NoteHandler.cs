@@ -21,9 +21,16 @@ public class NoteHandler : MonoBehaviour
 
     void Hit(int dir)
     {
-        GameManager.instance.sfxPlayer.PlayOneShot(GameManager.instance.sounds.forge);
+        GameManager.instance.sfxPlayer.pitch = Random.Range(1f, 1.15f);
+        StartCoroutine(DelayEffects(.1f));
         hitParticle.Play();
-        visualObject.DOPunchScale(Vector3.one * 5, .2f, 10, 1);
-    }
+        visualObject.DOPunchScale(Vector3.one/2, .2f, 10, 1);
+        FindObjectOfType<CharacterAnimation>().CharacterHit();
 
+        IEnumerator DelayEffects(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            GameManager.instance.sfxPlayer.PlayOneShot(GameManager.instance.sounds.forge);
+        }
+    }
 }
