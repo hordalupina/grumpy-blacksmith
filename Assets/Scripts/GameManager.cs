@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     public static GameManager instance;
 
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour {
             instance = this;
         }
 
-        if(readerAnimator != null)
+        if (readerAnimator != null)
         {
             StartCoroutine(Delay());
             IEnumerator Delay()
@@ -42,15 +44,20 @@ public class GameManager : MonoBehaviour {
                 readerAnimator.SetTrigger("read");
             }
         }
-        if(scroll != null)
+        if (scroll != null)
         {
             scroll.DOScale(.3f, .4f).From().SetEase(Ease.OutBack).SetDelay(.5f);
         }
 
-        if(playerUi != null)
+        if (playerUi != null)
         {
             playerUi.DOScale(0, .4f).From().SetEase(Ease.OutBack).SetDelay(.7f);
         }
     }
-    
+
+    public void GameOver()
+    {
+        SceneManager.LoadSceneAsync("GameOver");
+    }
+
 }
