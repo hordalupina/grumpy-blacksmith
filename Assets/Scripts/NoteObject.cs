@@ -6,7 +6,7 @@ public class NoteObject : MonoBehaviour
 {
 
     public bool canBePressed;
-    public string key;
+    public KeyCode key;
 
     // Start is called before the first frame update
     void Start()
@@ -32,12 +32,12 @@ public class NoteObject : MonoBehaviour
         if (other.CompareTag("Destroy")) {
             Destroy(gameObject);
         }
-        Debug.Log(other.gameObject.name + " : " + gameObject.name + " : " + Time.time);
+        // Debug.Log(other.gameObject.name + " : " + gameObject.name + " : " + Time.time);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         canBePressed = false;
-        Debug.Log(other.gameObject.name + " : " + gameObject.name + " : " + Time.time);
+        // Debug.Log(other.gameObject.name + " : " + gameObject.name + " : " + Time.time);
     }
 }
