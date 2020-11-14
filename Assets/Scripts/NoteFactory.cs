@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class NoteFactory : MonoBehaviour
 {
-
     public GameObject notePrefab;
+
+    public float delay = 1f;
 
     KeyCode[] availableKeys = {
         KeyCode.UpArrow,
@@ -21,7 +22,22 @@ public class NoteFactory : MonoBehaviour
         AddNotesToQueue();
         AddNotesToQueue();
 
-        InvokeRepeating("InstantiateNote", 1f, 1.0f);
+        // InvokeRepeating("InstantiateNote", 1f, 1.0f);
+        StartCoroutine(InstantiationLoop());
+        
+    }
+
+    IEnumerator InstantiationLoop()
+    {
+        int spawnedNotes = 0;
+        
+        while(true)
+        {
+            delay = (spawnedNotes % 8 == 0 && delay > 0.4f) ? (delay - 0.05f) : delay;
+            yield return new WaitForSeconds(delay);
+            InstantiateNote();
+            spawnedNotes++;
+        }
     }
 
     void InstantiateNote()
