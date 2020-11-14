@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    public AudioSource audioPlayer;
     public static GameManager instance;
 
-    void Start()
-    {
-        audioPlayer = GetComponent<AudioSource>();
-    }
+    [Space]
+
+    [Header("Audio Settings")]
+    public AudioSource musicPlayer; //public reference
+    public AudioSource sfxPlayer; //public reference
+    public SoundLibrary sounds;
 
     private void Awake()
     {

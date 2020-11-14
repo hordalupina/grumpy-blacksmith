@@ -1,17 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
+[System.Serializable] public class NoteEvent : UnityEvent { }
 public class NoteObject : MonoBehaviour
 {
-
+    GameManager gm;
     public bool canBePressed;
     public KeyCode key;
+
+    [HideInInspector]
+    public NoteEvent Hit;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = GameManager.instance;
     }
 
     // Update is called once per frame
@@ -19,8 +24,11 @@ public class NoteObject : MonoBehaviour
     {
         if (canBePressed && Input.GetKey(key))
         {
+            //evento para ativação de visuais/sonoras
+            Hit.Invoke();
+
             print("up arrow key is held down");
-            GameManager.instance.audioPlayer.Play();
+            gm.sfxPlayer.PlayOneShot(gm.sounds.forge);
             canBePressed = false;
             Destroy(gameObject);
         }
