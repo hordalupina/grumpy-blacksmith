@@ -460,7 +460,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press any key to try again
+  m_Text: PRESS KEY TO TRY AGAIN
 --- !u!222 &1113113188
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -720,7 +720,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You Lost
+  m_Text: YOU LOST
 --- !u!222 &1682571730
 CanvasRenderer:
   m_ObjectHideFlags: 0
