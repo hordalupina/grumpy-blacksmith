@@ -608,7 +608,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cb622378258a5ff8db64e06fca14bf3b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 05d0e82d8b1d8c24f968fd3e9c3f3b92, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.05
   m_Pitch: 1
@@ -725,7 +725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   song_theme: {fileID: 0}
   song_bg: {fileID: 0}
-  forge: {fileID: 8300000, guid: 67bb49f6a53c4627fbc9463c137c81d9, type: 3}
+  forge: {fileID: 8300000, guid: 1b6620f7f4b6ca6f8a7a0bdebebec273, type: 3}
   miss: {fileID: 0}
 --- !u!4 &412192383
 Transform:
@@ -1384,9 +1384,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b243de4fa4b5b5d5db423353f98fa359, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 86aadc5eee3bd9357b0ad3a3494bb6ad, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0
