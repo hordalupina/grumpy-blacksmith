@@ -20,6 +20,10 @@ public class NoteDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gm.canPlay)
+            return;
+
+
         CheckPressWhenKeyIsNotInDetector();
 
         CheckKeyInDetectorIsRight();

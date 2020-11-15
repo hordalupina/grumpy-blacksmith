@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ScoreHandler : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class ScoreHandler : MonoBehaviour
 
     public void AddScore(int value)
     {
+        Scoreboard.transform.DOComplete();
+        Scoreboard.transform.DOPunchScale(Vector3.one, .2f, 10, 1);
         score += value;
         Scoreboard.text = "" + score;
     }

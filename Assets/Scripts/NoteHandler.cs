@@ -29,6 +29,29 @@ public class NoteHandler : MonoBehaviour
 
     void Hit(KeyCode key)
     {
+
+        if (key == KeyCode.UpArrow)
+        {
+            GameManager.instance.sfxPlayer.PlayOneShot(GameManager.instance.sounds.forgeUp);
+        }
+
+        if (key == KeyCode.DownArrow)
+        {
+            GameManager.instance.sfxPlayer.PlayOneShot(GameManager.instance.sounds.forgeDown);
+        }
+
+
+        if (key == KeyCode.RightArrow)
+        {
+            GameManager.instance.sfxPlayer.PlayOneShot(GameManager.instance.sounds.forgeRight);
+        }
+
+
+        if (key == KeyCode.LeftArrow)
+        {
+            GameManager.instance.sfxPlayer.PlayOneShot(GameManager.instance.sounds.forgeLeft);
+        }
+
         StartCoroutine(DelayEffects(.1f));
         hitParticle.Play();
         visualObject.DOPunchScale(Vector3.one / 2, .2f, 10, 1);
@@ -38,29 +61,7 @@ public class NoteHandler : MonoBehaviour
         IEnumerator DelayEffects(float delay)
         {
             yield return new WaitForSeconds(delay);
-
-            if (key == KeyCode.UpArrow)
-            {
-                GameManager.instance.sfxPlayer.PlayOneShot(GameManager.instance.sounds.forgeUp);
-            }
-
-            if (key == KeyCode.DownArrow)
-            {
-                GameManager.instance.sfxPlayer.PlayOneShot(GameManager.instance.sounds.forgeDown);
-            }
-
-
-            if (key == KeyCode.RightArrow)
-            {
-                GameManager.instance.sfxPlayer.PlayOneShot(GameManager.instance.sounds.forgeRight);
-            }
-
-
-            if (key == KeyCode.LeftArrow)
-            {
-                GameManager.instance.sfxPlayer.PlayOneShot(GameManager.instance.sounds.forgeLeft);
-            }
-
+            GameManager.instance.forgePlayer.Play();
             //camerashake
             Camera.main.transform.DOComplete();
             Camera.main.transform.DOShakePosition(.2f, .05f, 10, 90, false, true);
