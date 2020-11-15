@@ -42,7 +42,7 @@ public class NoteDetector : MonoBehaviour
             GetComponent<Collider2D>().enabled = false;
             Destroy(gameObject, .5f);
 
-            SceneManager.LoadSceneAsync("GameOver");
+            gm.GameOver();
 
             return;
         }
@@ -75,7 +75,7 @@ public class NoteDetector : MonoBehaviour
             GetComponent<Collider2D>().enabled = false;
             Destroy(gameObject, .5f);
 
-            SceneManager.LoadSceneAsync("GameOver");
+            gm.GameOver();
         }
     }
 

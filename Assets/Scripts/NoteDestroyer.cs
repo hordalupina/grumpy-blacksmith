@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class NoteDestroyer : MonoBehaviour
 {
+
+    GameManager gm;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = GameManager.instance;
     }
 
     // Update is called once per frame
@@ -23,7 +26,7 @@ public class NoteDestroyer : MonoBehaviour
 
         if (other.CompareTag("Collider") && !currentNote.played) {
             //Game Over Condition
-            SceneManager.LoadSceneAsync("GameOver");
+            gm.GameOver();
         }
     }
 }

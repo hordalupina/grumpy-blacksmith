@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        StaticMemory.Score = scoreHandler.score;
         SceneManager.LoadSceneAsync("GameOver");
     }
 
